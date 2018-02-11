@@ -49,7 +49,8 @@ node {
     sh "sudo /srv/rpmbuild/scripts/run-single-build-from-jenkins.pl " + REPOFORGE_SPECDIR + " " + REPOFORGE_SPECNAME + " " + REPOFORGE_SPECENV + " " + /REPOFORGE_DISTTAG + " ALL"
   }
   stage('Results') {
-    archiveArtifacts artifacts: "build.log,builddeps.log,*/*.rpm", excludes: ''
+    print "TODO archiveArtifacts"
+    // archiveArtifacts artifacts: "build.log,builddeps.log,*/*.rpm", excludes: ''
   }
   stage('ConflictsCheck') {
     def overalRetval = 0
