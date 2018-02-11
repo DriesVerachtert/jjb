@@ -5,13 +5,13 @@
     distro-display-name:
       - CentOS 7 x86_64
     jobs:
-      - 'repoforge {specdir}/{specname_without_ext} for {distro-display-name}':
+      - 'repoforge_{specdir}_{specname_without_ext}_{specenv}':
           specdir: a52dec
           specname_without_ext: a52dec
 
 
 - job-template:
-    name: 'repoforge {specdir}/{specname_without_ext} for {distro-display-name}'
+    name: 'repoforge_{specdir}_{specname_without_ext}_{specenv}'
     display-name: 'repoforge {specdir}/{specname_without_ext} for {distro-display-name}'
     disttag: el7
     specname: '{specname_without_ext}.spec'
