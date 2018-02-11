@@ -2,8 +2,6 @@
     name: repoforge-centos7-x86_64
     specenv:
       - centos7-x86_64
-    distro-display-name:
-      - CentOS 7 x86_64
     jobs:
       - 'repoforge_{specdir}_{specname_without_ext}_{specenv}':
           specdir: a52dec
@@ -12,6 +10,7 @@
 
 - job-template:
     name: 'repoforge_{specdir}_{specname_without_ext}_{specenv}'
+    distro-display-name: 'CentOS 7 x86_64'
     display-name: 'repoforge {specdir}/{specname_without_ext} for {distro-display-name}'
     disttag: el7
     specname: '{specname_without_ext}.spec'
