@@ -1,0 +1,35 @@
+- project:
+    name: repoforge-centos7-x86_64
+    specenv:
+      - centos7-x86_64
+    distro-display-name:
+      - CentOS 7 x86_64
+    jobs:
+      - 'repoforge {specdir}/{specname_without_ext} for {distro-display-name}':
+          specdir: a52dec
+          specname_without_ext: a52dec
+
+
+- job-template:
+    name: 'repoforge {specdir}/{specname_without_ext} for {distro-display-name}'
+    display-name: 'repoforge {specdir}/{specname_without_ext} for {distro-display-name}'
+    disttag: el7
+    specname: '{specname_without_ext}.spec'
+    fullspecname: '{specdir}/{specname}'
+    description: 'Pipeline jenkins build of the spec file <a href="https://github.com/DriesVerachtert/rpms/blob/master/specs/{fullspecname}">https://github.com/DriesVerachtert/rpms/blob/master/specs/{fullspecname}</a> for CentOS 7 x86_64. The resulting RPMs are published at <a href="http://dries.eu/rpms/a52dec/a52dec">http://dries.eu/rpms/a52dec/a52dec</a>. The tests of a52dec can be found at <a href="https://github.com/DriesVerachtert/repoforge-t_functional/tree/master/tests/p_a52dec">https://github.com/DriesVerachtert/repoforge-t_functional/tree/master/tests/p_a52dec</a>.'
+    project-type: pipeline
+    pipeline-scm:
+        scm:
+          - git:
+              url: https://github.com/DriesVerachtert/jjb.git
+              branches:
+                - origin/master
+        script-path: repoforge-Jenkinsfile.groovy  
+    sandbox: false
+    disabled: false
+    concurrent: true
+    build-discarder:
+      days-to-keep: -1
+      num-to-keep: 5
+      artifact-days-to-keep: -1
+      artifact-num-to-keep: 5
